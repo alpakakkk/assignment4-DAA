@@ -1,41 +1,68 @@
 import java.util.*;
 
-/**
- * Missions 3 and 4. Find a word in a long text.
- */
+/** Missions 3 and 4: exact string matching on DNA sequences. */
 public class Marker {
 
     /**
-     * Mission 3a. The prefix function of p. pi[i] = the length of the longest proper prefix of p[0..i] that is
-     * also a suffix of p[0..i] ("proper" means shorter than p[0..i] itself).
-     * Example: p = "ACGAC" gives [0, 0, 0, 1, 2]. The last number is the "Border length" line.
+     * Mission 3a: pi[i] is the length of the longest proper prefix of p[0..i]
+     * that is also a suffix of p[0..i].
+     * Example: ACGAC -> [0, 0, 0, 1, 2].
      */
     public static int[] prefixFunction(String p) {
-        // TODO Mission 3a
-        return new int[p.length()];
+        int m = p.length();
+        int[] pi = new int[m];
+
+        for (int i = 1; i < m; i++) {
+            int matched = pi[i - 1];
+            while (matched > 0 && p.charAt(i) != p.charAt(matched)) {
+                matched = pi[matched - 1];
+            }
+            if (p.charAt(i) == p.charAt(matched)) {
+                matched++;
+            }
+            pi[i] = matched;
+        }
+        return pi;
     }
 
     /**
-     * Mission 3b. KMP. All start positions (counting from 0, in increasing order) where p occurs in text.
-     * Overlapping occurrences count: "ACG" occurs in "ACGACG" at 0 and 3, and "AA" in "AAA" at 0 and 1.
-     * Use the prefix function: the text pointer never goes back. The number of positions is "Marker hits",
-     * the first one is "First hit" (-1 when there is none).
+     * Mission 3b: KMP returns every match start, including overlapping matches.
+     * The text index i only moves forward. On a mismatch or after a match,
+     * pi tells us how many pattern letters can already be reused.
      */
     public static int[] findAll(String text, String p) {
-        // TODO Mission 3b
-        return new int[0];
+        // Empty markers are not genes, so there are no reported locations.
+        if (p.isEmpty()) {
+            return new int[0];
+        }
+
+        int[] pi = prefixFunction(p);
+        List<Integer> starts = new ArrayList<>();
+        int matched = 0;
+
+        for (int i = 0; i < text.length(); i++) {
+            while (matched > 0 && text.charAt(i) != p.charAt(matched)) {
+                matched = pi[matched - 1];
+            }
+            if (text.charAt(i) == p.charAt(matched)) {
+                matched++;
+            }
+            if (matched == p.length()) {
+                starts.add(i - p.length() + 1);
+                // Do not reset to zero: the next occurrence can overlap.
+                matched = pi[matched - 1];
+            }
+        }
+
+        int[] result = new int[starts.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = starts.get(i);
+        }
+        return result;
     }
 
-    /**
-     * Mission 4. Rabin-Karp. The number of positions i in a such that the word of k letters starting at i
-     * (a[i..i+k-1]) also occurs somewhere in b. Count positions, not different words. This is the "Shared words" line.
-     * The idea: give every window of k letters a number (a rolling hash, updated in O(1) when the window moves by one),
-     * look the number up among the windows of b, and when it is found COMPARE THE LETTERS, because two different words
-     * can have the same hash.
-     * Example: a = "ACGTAC", b = "TTACGT", k = 4: the words of a are ACGT, CGTA, GTAC; only ACGT is in b, so the answer is 1.
-     */
+    /** Mission 4: implemented in a separate commit. */
     public static int sharedWords(String a, String b, int k) {
-        // TODO Mission 4
         return -1;
     }
 }
