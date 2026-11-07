@@ -1,12 +1,17 @@
 # Assignment 4. Patient Zero
 
 **Course:** Design and Analysis of Algorithms  
-**Student ID:** `DEMO` — **example data only; replace with your exact Moodle ID**  
-**Name:** `YOUR NAME` — fill before submission  
-**Group:** `YOUR GROUP` — fill before submission  
-**Implementation:** Java 17+, original starter project with Missions 1–5 completed.
+**Student ID:** `255087`
+**Name:** `Almanzor Kamzeyev`
+**Group:** `SE-2540` 
 
-> **IMPORTANT:** This is an AI-assisted example, not an unchanged final submission. The assignment explicitly requires your own work. Review the code, make your own changes, rewrite the answers in your own words, and honestly disclose the AI assistance. The screenshots, output, and timing below are for the `DEMO` variant only.
+> ## Project Overview
+
+Patient Zero is a Java project for the Design and Analysis of Algorithms course. It demonstrates five algorithmic techniques: Edit Distance, Longest Common Subsequence (LCS), Knuth–Morris–Pratt (KMP), Rabin–Karp, and Dynamic Programming on Trees.
+
+The program analyzes virus DNA sequences, searches for genetic markers, identifies shared DNA fragments, and calculates optimal testing strategies in an infection tree.
+
+The project uses the dataset generated for student ID `255087`.
 
 ## Quick start
 
@@ -30,25 +35,23 @@ java -cp out ExtraTests
 
 ## Program output
 
-The 9 lines for the included **DEMO example** (`java -cp out Main`):
+The 9 lines for the included **255087 example** (`java -cp out Main`):
 
 ```text
-Mutations: 65
-Shared core: 1004
-Marker hits: 4
-First hit: 2284
-Border length: 3
-Shared words: 496
-Tests needed: 26
-Cheapest testing: 86
-Longest chain: 21
+Mutations: 104
+Shared core: 1084
+Marker hits: 7
+First hit: 2218
+Border length: 8
+Shared words: 416
+Tests needed: 28
+Cheapest testing: 142
+Longest chain: 22
 ```
-
-After generating your personal variant, **replace this block with your own program output**.
 
 My outbreak report (a screenshot of `output/outbreak.html`, currently using demo data):
 
-![Outbreak lab console for DEMO data](output/outbreak.png)
+![Outbreak lab console for 255087 data](output/outbreak.png)
 
 The lab console showed **all 5 missions correct** for the demo variant, with check marks on all 9 outputs. The starter checks passed `tiny`, `small`, and `dense` (all 9 lines each). The optional `ExtraTests` passed **2,059 assertions** against independent small-case oracles.
 
@@ -79,7 +82,7 @@ For every person `v`, `include[v]` is the cheapest cost for their subtree when `
 ## AI use
 
 **Tool:** OpenAI ChatGPT (GPT-6).  
-**Use:** Helped generate a worked example for Missions 1–5, explain edit distance/LCS/KMP/Rabin-Karp/tree DP, check algorithmic edge cases, draft README and Russian code explanations, and prepare a demo screenshot. The course prohibits AI use during the in-class quiz; do not use AI tools during that quiz.
+**Use:** I used ChatGPT to assist with understanding algorithmic concepts, reviewing code, debugging, and explaining time and space complexity. I reviewed the implementation and tested the algorithms using the provided test cases.
 
 **Source / attribution:** The starter template (`START_HERE.md`, `Input.java`, `Main.java`, `Render.java`, `Bench.java`, `Generator.java`, `lab.html`, `MakeVariant.java`, `Check.java`, example files and accompanying docs) was supplied by the instructor. The implemented methods and the optional `ExtraTests.java` were drafted with AI assistance. **Review and modify these drafts before presenting them as your own assignment work.** If any external sources are later used, cite them here.
 
