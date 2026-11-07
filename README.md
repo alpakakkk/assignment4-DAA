@@ -1,8 +1,8 @@
 # Assignment 4. Patient Zero
 
 **Course:** Design and Analysis of Algorithms  
-**Student ID:** `255087`
-**Name:** `Almanzor Kamzeyev`
+**Student ID:** `255087`  
+**Name:** `Almanzor Kamzeyev`  
 **Group:** `SE-2540` 
 
 > ## Project Overview
